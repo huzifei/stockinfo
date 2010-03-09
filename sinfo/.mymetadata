@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="sinfo"
+  id="myeclipse.1257472529218"
+  context-root="/sinfo"
+  j2ee-spec="1.4"
+  archive="sinfo.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

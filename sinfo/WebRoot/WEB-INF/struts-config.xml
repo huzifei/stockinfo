@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+    <form-bean name="sinaForm" type="org.apache.struts.action.DynaActionForm" />
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards>
+		<forward name="actioninfo_forward" path="/sinfo/message.jsp" />
+ </global-forwards>
+ 
+  <action-mappings >
+    <action
+      attribute="sinaForm"
+      input="/form/sinainfo.jsp"
+      name="sinaForm"
+      parameter="actionMethod"
+      path="/sina"
+      scope="request"
+      type="stock.action.SinaAction">
+      <forward
+        name="resultok"
+        path="/sinfo/resultok.jsp"
+        contextRelative="true" />
+    </action>
+
+  </action-mappings>
+
+  <message-resources parameter="stock.ApplicationResources" />
+</struts-config>
+

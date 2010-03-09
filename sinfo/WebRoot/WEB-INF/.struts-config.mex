@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sina.do" location="50,50" dimension="151,88" />
+  <StrutsActivity path="/sinfo/resultok.jsp" location="950,50" dimension="116,49" />
+  <StrutsActivity path="/form/sinainfo.jsp" location="650,50" dimension="114,49" />
+  <StrutsActivity path="resultok.jsp" location="350,50" dimension="85,49" />
+  <StrutsActivity path="actioninfo_forward;6" />
+  <StrutsActivity path="/sinfo/message.jsp" />
+  <StrutsTransition id="actioninfo_forward;6,null,/sinfo/message.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sina.do,resultok,/sinfo/resultok.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="125,94" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/sinainfo.jsp,null,/sina.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="707,99" />
+      <AbsolutePoint location="707,114" />
+      <AbsolutePoint location="201,114" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
