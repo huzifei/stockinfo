@@ -128,7 +128,7 @@ public class SinaAction  extends DispatchAction {
 		String result = null;
 				
 		int numtable = 2;	// table[numtable], the num of table
-		int numrow = 2;		// tr[numrow], the num of row in table, to find speical keyword
+		int numrow = 3;		// tr[numrow], the num of row in table, to find speical keyword
 		int numcol = 2;		// td[numcol], the num of col in table, to find special date
 		// Double[] gprofitsPercentData = new Double[MAXARR];
 		
@@ -168,8 +168,9 @@ public class SinaAction  extends DispatchAction {
 		
 		// Get the profitStr row in table, return numrow after below
 		xpathStr = getKeywordXpath(numtable, numrow);
+		log.debug("numtable = "+numtable+", numrow = "+numrow+"xpathStr: "+xpathStr);
 		while ((result = htmlparser.getXpathSingleContent(xpathStr)) != null) {
-			// log.debug("result: "+result+", len = "+result.length());
+			log.debug("result: "+result+", len = "+result.length());
 			if (result.contains(profitStr) && result.length() <= 5) // Îå¡¢¾»ÀûÈó
 				break;
 			numrow++;
@@ -282,7 +283,7 @@ public class SinaAction  extends DispatchAction {
 		String result = null;
 		
 		int numtable = 2;	// table[numtable], the num of table
-		int numrow = 3;		// tr[numrow], the num of row in table, to find speical keyword
+		int numrow = 4;		// tr[numrow], the num of row in table, to find speical keyword
 		int numcol = 2;		// td[numcol], the num of col in table, to find special date
 		
 		/*
@@ -315,6 +316,7 @@ public class SinaAction  extends DispatchAction {
 		
 		// Get the profitStr row in table, return numrow after below
 		xpathStr = getKeywordXpath(numtable, numrow);
+		log.debug("numtable = "+numtable+", numrow = "+numrow+"xpathStr: "+xpathStr);
 		while ((result = htmlparser.getXpathSingleContent(xpathStr)) != null) {
 			log.debug("result: "+result+", len = "+result.length());
 			if (result.contains(keyword)) 
@@ -456,8 +458,10 @@ public class SinaAction  extends DispatchAction {
 		String str = null;
 		if (value == null)
 			return null;
-		else
+		else {
 			str = value.replace(",", "");
+			str = str.replace("Ôª", "");
+		}
 		log.debug("getDouble: get match value = "+str+", return double value "+Double.valueOf(str));
 		if(str.matches("^[0-9]*$") || str.matches("^[-][0-9]*$")) {
 			log.debug("match");
