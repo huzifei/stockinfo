@@ -106,7 +106,7 @@ public class SinaAction  extends DispatchAction {
 		
 		/*
 		 * CashSheet
-		 */
+		*/ 
 		ret = cashflowParse(urlCashflow, operateCashflowStr, intervalDate);
 		if (ret < 0) {
 			request.setAttribute("retResult", "Parse the cash flow message error");
@@ -117,6 +117,7 @@ public class SinaAction  extends DispatchAction {
 		request.setAttribute("goperateCashinPercentReq", goperateCashinPercent);
 		request.setAttribute("goperateCashinAverageReq", goperateCashinAverageStr);
 		request.setAttribute("goperateCashinShortAverageReq", goperateCashinShortAverageStr);
+		
 		
 		return mapping.findForward("resultok");
 	}
@@ -216,8 +217,10 @@ public class SinaAction  extends DispatchAction {
 					retProfit = htmlparser.getXpathSingleContent(getResultXpath(numtable, numrow, numcol));
 					if ((tmpInt = getDouble(retProfit)) != null) {
 						gprofits[index] = tmpInt;
+						log.debug("index = "+index+", gprofits["+index+"] = "+gprofits[index]);
 						if (index > 0) {
 							gprofitsPercent[index-1] = getPercent(gprofits[index-1]-gprofits[index], gprofits[index]);
+							log.debug("gprofitsPercent["+(index-1)+"] ="+ gprofitsPercent[index-1] );
 						}
 					}
 					log.debug("result date: "+curDate+", profit: "+retProfit);
@@ -248,6 +251,7 @@ public class SinaAction  extends DispatchAction {
 		for ( num = 0; num < index-1; num++) {
 			sum += gprofitsPercent[num];
 		}
+		log.debug("num = "+num+", sum = "+sum);
 		gprofitsNum = num;
 		Double profitsAverage = 0.0;
 		if (num > 0) {
@@ -459,6 +463,10 @@ public class SinaAction  extends DispatchAction {
 		if (value == null)
 			return null;
 		else {
+			log.debug("getDouble value = "+value);
+			int val = value.indexOf(".");
+			if (val > 0)
+				value = value.substring(0, val);
 			str = value.replace(",", "");
 			str = str.replace("Ԫ", "");
 		}
